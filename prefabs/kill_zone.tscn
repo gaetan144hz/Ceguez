@@ -3,9 +3,12 @@
 [ext_resource type="Script" path="res://prefabs/kill_zone.gd" id="1_ram16"]
 
 [node name="Kill_Zone" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_ram16")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
