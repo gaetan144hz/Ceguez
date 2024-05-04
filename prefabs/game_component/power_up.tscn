@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://brkmghme5lu2h"]
+
+[ext_resource type="Script" path="res://prefabs/game_component/power_up.gd" id="1_ablcl"]
+[ext_resource type="Texture2D" uid="uid://caa6ujre3m303" path="res://assets/sprites/power_up.png" id="1_vs31y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0hau"]
+
+[node name="Power_up" type="Area2D"]
+script = ExtResource("1_ablcl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vs31y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_r0hau")

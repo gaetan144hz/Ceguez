@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://dl8adrhtvp65k"]
+
+[ext_resource type="PackedScene" uid="uid://brrgmoxcdw12o" path="res://prefabs/character/player_knight.tscn" id="1_3pqa2"]
+[ext_resource type="Script" path="res://scenes/Game Manager.gd" id="1_3rut2"]
+[ext_resource type="PackedScene" uid="uid://021o1tvf6mkq" path="res://prefabs/game_component/crate.tscn" id="2_j5kpn"]
+[ext_resource type="PackedScene" uid="uid://b6xkpgdshdbic" path="res://prefabs/game_component/wall.tscn" id="3_f41bv"]
+[ext_resource type="PackedScene" uid="uid://cnc4psp2fv8yd" path="res://prefabs/coin.tscn" id="4_b4kk2"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_pe6wb"]
+resource_name = "walls"
+scenes/1/scene = ExtResource("3_f41bv")
+
+[sub_resource type="TileSet" id="TileSet_xynjp"]
+sources/0 = SubResource("TileSetScenesCollectionSource_pe6wb")
+
+[node name="Game_Unit_Test" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="." groups=["game_manager"]]
+unique_name_in_owner = true
+script = ExtResource("1_3rut2")
+
+[node name="Score_Label" type="Label" parent="GameManager"]
+offset_left = -32.0
+offset_top = -46.0
+offset_right = 48.0
+offset_bottom = -23.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Player_Knight" parent="." instance=ExtResource("1_3pqa2")]
+position = Vector2(35, -29)
+
+[node name="Camera2D" type="Camera2D" parent="Player_Knight"]
+zoom = Vector2(4, 4)
+
+[node name="Power_Up" parent="." instance=ExtResource("2_j5kpn")]
+position = Vector2(75, -42)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_xynjp")
+format = 2
+layer_0/name = "walls"
+layer_0/tile_data = PackedInt32Array(65535, 0, 65536, 0, 0, 65536, 1, 0, 65536, 2, 0, 65536, 3, 0, 65536, 4, 0, 65536, 5, 0, 65536, 6, 0, 65536, 7, 0, 65536, 8, 0, 65536, 9, 0, 65536, 65546, 0, 65536, 65547, 0, 65536, 65548, 0, 65536, 65549, 0, 65536, 65550, 0, 65536, 65551, 0, 65536, 65552, 0, 65536, 65553, 0, 65536, 65554, 0, 65536, 65555, 0, 65536, 65556, 0, 65536, 65534, 0, 65536, 65533, 0, 65536, 65532, 0, 65536, 65531, 0, 65536, 65530, 0, 65536, 65529, 0, 65536, 65528, 0, 65536, 65527, 0, 65536, 131062, 0, 65536, 131061, 0, 65536, 131060, 0, 65536, 131059, 0, 65536, 131058, 0, 65536, 131057, 0, 65536, 131056, 0, 65536, -131061, 0, 65536, -196597, 0, 65536, -262133, 0, 65536, -327669, 0, 65536, -393205, 0, 65536, -458741, 0, 65536, -524277, 0, 65536, -65548, 0, 65536, -65549, 0, 65536, -65550, 0, 65536, -65551, 0, 65536, -131088, 0, 65536, -131089, 0, 65536, -131090, 0, 65536, -131091, 0, 65536, -131092, 0, 65536, -131093, 0, 65536, -131094, 0, 65536, -196631, 0, 65536, -196632, 0, 65536, -196633, 0, 65536, -196634, 0, 65536, -196610, 0, 65536, -196609, 0, 65536, -262144, 0, 65536, -262143, 0, 65536, -262142, 0, 65536, -196599, 0, 65536, -196598, 0, 65536, -262132, 0, 65536, -262131, 0, 65536, -327672, 0, 65536, -327673, 0, 65536, -327674, 0, 65536, -589814, 0, 65536, -589813, 0, 65536, -589812, 0, 65536, -458738, 0, 65536, -458737, 0, 65536, -131057, 0, 65536, -131056, 0, 65536, -131055, 0, 65536, -458748, 0, 65536, -458749, 0, 65536, -458750, 0, 65536, -458753, 0, 65536, -458754, 0, 65536, -327685, 0, 65536, -327686, 0, 65536, -327687, 0, 65536, -655358, 0, 65536, -655357, 0, 65536, -655356, 0, 65536, -655355, 0, 65536, -589831, 0, 65536, -589832, 0, 65536, -589833, 0, 65536, -196618, 0, 65536, -196617, 0, 65536, -786436, 0, 65536, -786435, 0, 65536, -786434, 0, 65536, -786433, 0, 65536, -851960, 0, 65536, -851959, 0, 65536, -851958, 0, 65536, -851957, 0, 65536, -720893, 0, 65536, -786429, 0, 65536, -655367, 0, 65536, -720903, 0, 65536, -393217, 0, 65536, -851970, 0, 65536, -786422, 0, 65536, -786421, 0, 65536, -393230, 0, 65536, -393229, 0, 65536, -393228, 0, 65536, -524291, 0, 65536, -524272, 0, 65536, -524271, 0, 65536, -524270, 0, 65536)
+layer_1/name = "destructables"
+layer_1/tile_data = PackedInt32Array()
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="Coin" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(-72, -11)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin2" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(-24, -11)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin3" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(8, -74)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin4" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(-88, -106)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin5" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(-104, -106)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin6" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(-72, -106)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin7" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(72, -168)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin8" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(88, -168)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin9" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(120, -89)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin10" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(106, -89)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin11" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(265, -137)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin12" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(280, -137)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin13" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(-200, -41)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin14" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(-215, -41)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin15" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(-56, -11)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin16" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(104, -9)
+game_manager = NodePath("../../GameManager")
+
+[node name="Coin17" parent="Coins" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_b4kk2")]
+position = Vector2(120, -9)
+game_manager = NodePath("../../GameManager")
+
+[node name="Window" type="Window" parent="."]
+mode = 3
+position = Vector2i(0, 36)

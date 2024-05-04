@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://brrgmoxcdw12o"]
+[gd_scene load_steps=29 format=3 uid="uid://brrgmoxcdw12o"]
 
 [ext_resource type="Script" path="res://prefabs/character/player_knight.gd" id="1_co2h6"]
 [ext_resource type="Texture2D" uid="uid://b4frno1cfesdp" path="res://assets/sprites/knight.png" id="1_kalff"]
@@ -173,10 +173,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_xu0q7"]
 radius = 5.0
 
-[node name="Player_Knight" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_6tui5"]
+radius = 8.0
+
+[node name="Player_Knight" type="CharacterBody2D" groups=["player"]]
 z_index = 3
 position = Vector2(0, -12)
 collision_layer = 2
+collision_mask = 20
 script = ExtResource("1_co2h6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -192,3 +196,17 @@ shape = SubResource("CircleShape2D_xu0q7")
 bus = &"SFX"
 metadata/audio_jump_stream = ExtResource("3_v1y61")
 metadata/audio_hurt_stream = ExtResource("4_1v1gg")
+
+[node name="InteractionComponent" type="Node2D" parent="."]
+
+[node name="InteractArea" type="Area2D" parent="InteractionComponent"]
+collision_mask = 3
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent/InteractArea"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_6tui5")
+debug_color = Color(0.770153, 0.322425, 0.776008, 0.42)
+
+[connection signal="body_entered" from="InteractionComponent/InteractArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="InteractionComponent/InteractArea" to="." method="_on_area_2d_body_exited"]
